@@ -1,5 +1,4 @@
 #!/bin/sh -l
 
-echo "Hello $1"
-time=$(date)
-echo ::set-output name=time::$time
+BRANCH_NAME=$(cat ${GITHUB_EVENT_PATH} | jq -r '.pull_request.head.ref')
+echo ::set-output branch="${BRANCH_NAME}"

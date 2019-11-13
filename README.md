@@ -1,23 +1,21 @@
-# Hello world docker action
+# Get branch name action
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
-
-## Inputs
-
-### `who-to-greet`
-
-**Required** The name of the person to greet. Default `"World"`.
+This action gets the branch name from a workflow triggered by a `pull_request`
 
 ## Outputs
 
-### `time`
+### `branch`
 
-The time we greeted you.
+The name of the current git branch
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-docker-action@master
-with:
-  who-to-greet: 'Mona the Octocat'
+on: pull_request
+...
+    steps:
+    - id: get_branch
+      uses: ConduitVC/action-get-branch@master
+    
+    - run: echo "Branch name is ${{ steps.get_branch.outputs.branch }}"
 ```
