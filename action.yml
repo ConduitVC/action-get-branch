@@ -1,15 +1,8 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+name: 'Get branch name'
+description: 'Extract the branch name from GitHub event'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  branch:
+    description: 'Branch name'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
